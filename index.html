@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bio of Charan</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: black;
+			font-family: sans-serif;
+			text-align: left;
+		}
+		h1 {
+			margin-top: 30px;
+			font-family: 'Times New Roman';
+			font-size: 32px;
+			color: white;
+			text-decoration-style:wavy;
+			text-shadow: 1px 1px 500px cyan;
+		}
+		h2 {
+			margin-top: 30px;
+			font-family: 'Times New Roman';
+			font-size: 32px;
+			color: white;
+			text-shadow: 1px 1px 50px cyan;
+		}
+		p {
+			font-size: 14px;
+			margin-top: 3px;
+			font-family: 'Times New Roman';
+			color: white;
+			text-shadow: 1px 1px 4px black;
+		}
+		input {
+			margin-top: 5px;
+			padding: 5px;
+			border-radius: 10px;
+			border: 5px;
+			font-size: 12px;
+		}
+		button {
+			margin-top: 10px;
+			padding: 5px 10px;
+			border-radius: 10px;
+			border: none;
+			background-color: orange;
+			color: Black;
+			font-size: 12px;
+			cursor: pointer;
+		}
+		#result {
+			margin-top: 20px;
+			font-size: 16px;
+			color: white;
+			text-shadow: 2px 2px 4px black;
+		}
+	</style>
+</head>
+<body>
+	<h1> Welcome to the bio page of Charan.</h1>
+	<h2> 😊😃🙂😁😋</h2>
+	<p>to know more information regarding Charan guess a number between 1 to 5:</p>
+	<input type="number" id="guess" min="0" max="5">
+	<button onclick="checkGuess()">Submit</button>
+	<p id="result"></p>
+
+	<script>
+		function checkGuess() {
+			const guess = parseInt(document.getElementById("guess").value);
+			const randomNumber = Math.floor(Math.random() * 5) + 1;
+
+			if (guess === randomNumber) {
+				document.getElementById("result").innerHTML = "Vuh! You guessed the correct number, now here is my info.";
+                document.getElementById("result").innerHTML += "<br>";
+				document.getElementById("result").innerHTML += "<br>* Full Name: Marayala Charan";
+				document.getElementById("result").innerHTML += "<br>* Personal e-mail: Charanrakesh89@gmail.com";
+                document.getElementById("result").innerHTML += "<br>* Favorite binge movie series: Pirates of Caribbean";
+				document.getElementById("result").innerHTML += "<br>* Hobbies: Chess, Badminton, Music";
+				document.getElementById("result").innerHTML += "<br>";
+                document.getElementById("result").innerHTML += "<br>* Skills: SQL, Advanced EXCEL, Python, Tableau";
+                document.getElementById("result").innerHTML += "<br>* Interest of learning(s): Quicksight, Python (SciPy, Theano, Keras, Pytorch), HTML, CSS";
+                document.getElementById("result").innerHTML += "<br>* Favorite Python libraries: Pandas, NumPy, Beautifulsoup";
+				document.getElementById("result").innerHTML += "<br>";
+				document.getElementById("result").innerHTML += "<br>";
+				document.getElementById("result").innerHTML += "<br>";
+				document.getElementById("result").innerHTML += "<br>#Thanks, It was so awesome of you reading my bio, will sure be in connect, if you can ping me via email 😊";
+			} else {
+				document.getElementById("result").innerHTML = "Nice try, but that was incorrect. Please try again.";
+			}
+		}
+	</script>
+</body>
+</html>
