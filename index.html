@@ -1,95 +1,465 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Bio of Charan</title>
-	<style>
-		body {
-			margin: 0;
-			padding: 0;
-			background-color: black;
-			font-family: sans-serif;
-			text-align: left;
-		}
-		h1 {
-			margin-top: 30px;
-			font-family: 'Times New Roman';
-			font-size: 32px;
-			color: white;
-			text-decoration-style:wavy;
-			text-shadow: 1px 1px 500px cyan;
-		}
-		h2 {
-			margin-top: 30px;
-			font-family: 'Times New Roman';
-			font-size: 32px;
-			color: white;
-			text-shadow: 1px 1px 50px cyan;
-		}
-		p {
-			font-size: 14px;
-			margin-top: 3px;
-			font-family: 'Times New Roman';
-			color: white;
-			text-shadow: 1px 1px 4px black;
-		}
-		input {
-			margin-top: 5px;
-			padding: 5px;
-			border-radius: 10px;
-			border: 5px;
-			font-size: 12px;
-		}
-		button {
-			margin-top: 10px;
-			padding: 5px 10px;
-			border-radius: 10px;
-			border: none;
-			background-color: orange;
-			color: Black;
-			font-size: 12px;
-			cursor: pointer;
-		}
-		#result {
-			margin-top: 20px;
-			font-size: 16px;
-			color: white;
-			text-shadow: 2px 2px 4px black;
-		}
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio of Charan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --backgrkground: #d0d0d0;
+            --text: #212121;
+            --accent-primary: #571936;
+            --accent-secondary: #492435;
+            --neutral: #575757;
+            --off-white: #f5f5f5;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--background);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: var(--text);
+            line-height: 1.4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            width: 100%;
+            max-width: 1920px;
+            margin: 0 auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1440px;
+            padding: 40px;
+            box-sizing: border-box;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: var(--text);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border-bottom: 3px solid var(--accent-primary);
+            padding-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        h2 {
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .emoji {
+            display: inline-block;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 2px #fff, 0 0 4px #fff, 0 0 6px var(--accent-primary);
+            }
+            to {
+                text-shadow: 0 0 4px #fff, 0 0 6px #fff, 0 0 8px var(--accent-primary);
+            }
+        }
+
+        .emoji:nth-child(2) { animation-delay: 0.4s; }
+        .emoji:nth-child(3) { animation-delay: 0.8s; }
+        .emoji:nth-child(4) { animation-delay: 1.2s; }
+        .emoji:nth-child(5) { animation-delay: 1.6s; }
+
+        .game-container {
+            background: rgbagba(208, 208, 208, 0.25);
+            backdrop-filter: blur(10px);
+            -webkebkit-backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .game-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(31, 38, 135, 0.15);
+        }
+
+        .input-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        input {
+            padding: 12px;
+            font-size: 1.1em;
+            border: 2px solid var(--accent-secondary);
+            border-radius: 10px;
+            width: 80px;
+            transition: all 0.3s ease;
+            color: var(--text);
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 15px rgba(87, 25, 54, 0.15);
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 1.1em;
+            background-color: var(--accent-primary);
+            color: var(--off-white);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: var(--accent-secondary);
+            transform: translateY(-2px);
+        }
+
+        #result {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 15px;
+            font-size: 1em;
+            line-height: 1.6;
+            border: 2px solid var(--accent-secondary);
+            background: rgba(255, 255, 255, 0.9);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        #result.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #result.success {
+            animation: successPulse 0.5s ease;
+        }
+
+        #result.error {
+            animation: errorShake 0.5s ease;
+        }
+
+        @keyframes successPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes errorShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 12px 25px;
+            background-color: var(--neutral);
+            color: var(--off-white);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab:first-child {
+            border-radius: 10px 0 0 10px;
+        }
+
+        .tab:last-child {
+            border-radius: 0 10px 10px 0;
+        }
+
+        .tab.active {
+            background-color: var(--accent-primary);
+        }
+
+        .bio-content {
+            display: none;
+        }
+
+        .bio-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .bio-item {
+            margin: 15px 0;
+            padding: 15px;
+            border-left: 3px solid var(--accent-primary);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 0 10px 10px 0;
+            transition: all 0.3s ease;
+        }
+
+        .bio-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(5px);
+        }
+
+        .bio-label {
+            font-weight: 600;
+            color: var(--accent-primary);
+            margin-right: 10px;
+        }
+
+        .social-share {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .share-button {
+            padding: 10px;
+            border-radius: 50%;
+            background: var(--accent-primary);
+            color: var(--off-white);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .share-button:hover {
+            background: var(--accent-secondary);
+            transform: translateY(-2px);
+        }
+
+        .copy-button {
+            background: none;
+            border: none;
+            color: var(--accent-primary);
+            cursor: pointer;
+            padding: 5px;
+            margin-left: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .copy-button:hover {
+            color: var(--accent-secondary);
+            transform: scale(1.1);
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            background-color: var(--neutral);
+            color: var(--off-white);
+            text-align: center;
+            padding: 5px 10px;
+            border-radius: 6px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        p {
+            color: var(--text);
+            font-size: 1.1em;
+            margin: 15px 0;
+        }
+
+        .skills-list, .certifications-list {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        .skills-list li, .certifications-list li {
+            margin-bottom: 8px;
+        }
+
+        .skills-list li:before, .certifications-list li:before {
+            content: "•";
+            color: var(--accent-primary);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+    </style>
 </head>
 <body>
-	<h1> Welcome to the bio page of Charan.</h1>
-	<h2> 😊😃🙂😁😋</h2>
-	<p>to know more information regarding Charan guess a number between 1 to 5:</p>
-	<input type="number" id="guess" min="0" max="5">
-	<button onclick="checkGuess()">Submit</button>
-	<p id="result"></p>
+    <div class="container">
+        <h1>Welcome to Charan's Bio Page</h1>
+        <h2>
+            <span class="emoji">😊</span>
+            <span class="emoji">😃</span>
+            <span class="emoji">🙂</span>
+            <span class="emoji">😁</span>
+            <span class="emoji">😋</span>
+        </h2>
+        <div class="game-container">
+            <p>To know more about Charan, guess a number between 1 and 5:</p>
+            <div class="input-group">
+                <input type="number" id="guess" min="1" max="5">
+                <button onclick="checkGuess()">Submit</button>
+            </div>
+            <div id="result"></div>
+        </div>
+    </div>
 
-	<script>
-		function checkGuess() {
-			const guess = parseInt(document.getElementById("guess").value);
-			const randomNumber = Math.floor(Math.random() * 5) + 1;
+    <script>
+        function checkGuess() {
+            const guess = parseInt(document.getElementById("guess").value);
+            const randomNumber = Math.floor(Math.random() * 5) + 1;
+            const result = document.getElementById("result");
+            
+            result.classList.remove('show', 'success', 'error');
+            
+            setTimeout(() => {
+                if (guess === randomNumber) {
+                    let bioHTML = "<p>Vuh! You guessed the correct number. Here's the info about Charan:</p>";
+                    bioHTML += '<div class="tabs"><button class="tab active" onclick="showTab(\'professional\')">Professional</button><button class="tab" onclick="showTab(\'personal\')">Personal</button></div>';
+                    
+                    bioHTML += '<div id="professional" class="bio-content active">';
+                    bioHTML += createBioItem("Full Name", "Charan Marayala");
+                    bioHTML += createBioItem("Work Place", "Amazon");
+                    bioHTML += createBioItem("Skills Section", `
+                        <ul class="skills-list">
+                            <li>Data Engineering</li>
+                            <li>Business Intelligence</li>
+                            <li>Technical Skills (Python, Node.js)</li>
+                            <li>Database & API Development</li>
+                            <li>Advanced Excel</li>
+                            <li>Web Scripting</li>
+                            <li>DevOps & Cloud: CI/CD and CDK deployments, AWS, Docker, Jenkins</li>
+                        </ul>
+                    `);
+                    bioHTML += createBioItem("AWS Expertise", `
+                        <ul class="certifications-list">
+                            <li>AWS Certified Cloud Practitioner</li>
+                            <li>AWS Certified Data Engineer - Associate</li>
+                            <li>AWS Certified Developer - Associate</li>
+                        </ul>
+                        <strong>Cloud Experience:</strong> Extensive hands-on experience with AWS services and cloud architecture.
+                    `);
+                    bioHTML += '</div>';
+                    
+                    bioHTML += '<div id="personal" class="bio-content">';
+                    bioHTML += createBioItem("LinkedIn", `charan-marayala <button class="copy-button" onclick="shareOnLinkedIn()"><i class="fab fa-linkedin"></i></button>`);
+                    bioHTML += createBioItem("Personal e-mail", `Charanrakesh89@gmail.com <button class="copy-button" onclick="copyEmail(this)"><i class="far fa-copy"></i></button>`);
+                    bioHTML += createBioItem("Favorite binge movie series", "Pirates of Caribbean");
+                    bioHTML += createBioItem("Hobbies", "Chess♟️, Badminton🏸");
+                    bioHTML += createBioItem("Favorite Quote", `<br><strong>I was willing to accept what I couldn't change.<br>- A.P.J Abdul Kalam`)
+                    bioHTML += '</div>';
+                    
+                    bioHTML += '<div class="social-share">';
+                    bioHTML += '<button class="share-button" onclick="shareOnTwitter()"><i class="fab fa-twitter"></i></button>';
+                    bioHTML += '<button class="share-button" onclick="shareOnLinkedIn()"><i class="fab fa-linkedin-in"></i></button>';
+                    bioHTML += '<button class="share-button" onclick="shareViaEmail()"><i class="fas fa-envelope"></i></button>';
+                    bioHTML += '</div>';
+                    
+                    bioHTML += "<p>#Thanks for reading my bio! Feel free to connect via email. 😊</p>";
+                    
+                    result.innerHTML = bioHTML;
+                    result.classList.add('success');
+                } else {
+                    result.innerHTML = "<p>Nice try, but that was incorrect. Please try again.</p>";
+                    result.classList.add('error');
+                }
+                result.classList.add('show');
+            }, 300);
+        }
 
-			if (guess === randomNumber) {
-				document.getElementById("result").innerHTML = "Vuh! You guessed the correct number, now here the info regarding Charan.";
-                document.getElementById("result").innerHTML += "<br>";
-				document.getElementById("result").innerHTML += "<br>* Full Name: Marayala Charan";
-				document.getElementById("result").innerHTML += "<br>* Personal e-mail: Charanrakesh89@gmail.com";
-				document.getElementById("result").innerHTML += "<br>* Linked In: charan-marayala";
-                document.getElementById("result").innerHTML += "<br>* Favorite binge movie series: Pirates of Caribbean";
-				document.getElementById("result").innerHTML += "<br>* Hobbies: Chess, Badminton";
-				document.getElementById("result").innerHTML += "<br>";
-                document.getElementById("result").innerHTML += "<br>* Skills: SQL, Python, Advanced Excel, Web-Scripting";
-                document.getElementById("result").innerHTML += "<br>* Interest of learning(s): Cloud Computing, Advanced Networking ";
-                document.getElementById("result").innerHTML += "<br>* Liked Python libraries: Pandas, SciPy, LightGBM, Pipenv, Caffe2";
-				document.getElementById("result").innerHTML += "<br>";
-				document.getElementById("result").innerHTML += "<br>";
-				document.getElementById("result").innerHTML += "<br>";
-				document.getElementById("result").innerHTML += "<br>#Thanks, It was so awesome of you reading my bio; will sure be in connect, if you can ping me via email 😊";
-			} else {
-				document.getElementById("result").innerHTML = "Nice try, but that was incorrect. Please try again.";
-			}
-		}
-	</script>
+        function createBioItem(label, value) {
+            return `<div class="bio-item"><span class="bio-label">${label}:</span> ${value}</div>`;
+        }
+
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.bio-content');
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            contents.forEach(content => content.classList.remove('active'));
+            
+            document.querySelector(`button[onclick="showTab('${tabName}')"]`).classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+        }
+
+        function copyEmail(button) {
+            const email = "Charanrakesh89@gmail.com";
+            navigator.clipboard.writeText(email).then(() => {
+                const originalHTML = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check"></i>';
+                setTimeout(() => {
+                    button.innerHTML = originalHTML;
+                }, 2000);
+            });
+        }
+
+        function shareOnTwitter() {
+            const text =
+
+ "Check out Charan's professional profile!";
+            const url = window.location.href;
+            window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
+        }
+
+        function shareOnLinkedIn() {
+            window.open('https://www.linkedin.com/in/charan-marayala-208029224', '_blank');
+        }
+
+        function shareViaEmail() {
+            const subject = "Check out Charan's Profile";
+            const body = "I found this interesting profile you might want to check out!";
+            window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+
+        document.getElementById('guess').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                checkGuess();
+            }
+        });
+    </script>
 </body>
 </html>
