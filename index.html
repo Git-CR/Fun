@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --backgrkground: #d0d0d0;
+            --background: #d0d0d0;
             --text: #212121;
             --accent-primary: #571936;
             --accent-secondary: #492435;
@@ -237,28 +237,32 @@
         .social-share {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
+            align-items: center;
+            gap: 150px;
+            margin: 30px auto;
+            width: fit-content;
         }
 
         .share-button {
-            padding: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            padding: 0;
             border-radius: 50%;
             background: var(--accent-primary);
             color: var(--off-white);
             border: none;
             cursor: pointer;
             transition: all 0.3s ease;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
+
 
         .share-button:hover {
             background: var(--accent-secondary);
             transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(87, 25, 54, 0.2);
         }
 
         .copy-button {
@@ -371,7 +375,7 @@
                             <li>Database & API Development</li>
                             <li>Advanced Excel</li>
                             <li>Web Scripting</li>
-                            <li>DevOps & Cloud: CI/CD and CDK deployments, AWS, Docker, Jenkins</li>
+                            <li>DevOps & Cloud: CI/CD and AWS CDK deployments, Docker, Jenkins</li>
                         </ul>
                     `);
                     bioHTML += createBioItem("AWS Expertise", `
@@ -397,6 +401,7 @@
                     bioHTML += '<button class="share-button" onclick="shareOnLinkedIn()"><i class="fab fa-linkedin-in"></i></button>';
                     bioHTML += '<button class="share-button" onclick="shareViaEmail()"><i class="fas fa-envelope"></i></button>';
                     bioHTML += '</div>';
+
                     
                     bioHTML += "<p>#Thanks for reading my bio! Feel free to connect via email. 😊</p>";
                     
